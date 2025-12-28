@@ -2,16 +2,19 @@ import express from "express";
 import morgan from "morgan";
 import { pool } from "./db.js";
 import { runMigrations } from "./migrate.js";
+import { APIRequestHandler } from "./routes.js";
 
 export const app = express();
 
 const PORT = 3000;
-
+app.use(express.json());
+app.use(morgan("dev"));
 app.get("/", (req, res) => {
   res.send("Hello, World!");
 });
 
-app.use(morgan("dev"));
+app.use("/",APIRequestHandler)
+
 
 const start = async () => {
   try {

@@ -1,4 +1,4 @@
-import { Products } from "./products.repository";
+import { Products } from "./products.repository.js";
 
 export const ProductService = {
   async createProduct(data) {
@@ -13,5 +13,13 @@ export const ProductService = {
 
   async getById(id) {
     return await Products.getById(id);
+  },
+
+  async updateProduct(id, data) {
+    return await Products.update(id, data);
+  },
+
+  async deleteProduct(id) {
+    return await Products.deleteProduct(id);
   }
 };
